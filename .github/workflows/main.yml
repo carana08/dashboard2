@@ -1,18 +1,28 @@
 name: React App GitHub Deploy
-on: 
+
+on:
   push:
-    branches: [main] 
+    branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-    
-      - name: Install & Build
-        run: npm i && npm run build
-    
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
