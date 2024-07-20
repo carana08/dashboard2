@@ -207,15 +207,6 @@ function App() {
 			<Grid xs={12} sm={12} md={3} lg={4}>
 				{summary[0]}
 			</Grid>
-      <Grid xs={12} sm={12} md={3} lg={4}>
-				{summary[0]}
-			</Grid>
-      <Grid xs={12} sm={12} md={3} lg={4}>
-				{summary[0]}
-			</Grid>
-      <Grid xs={12} sm={12} md={3} lg={4}>
-				{summary[0]}
-			</Grid>
 			<Grid xs={12} sm={12} md={12} lg={12}>
 				<h1>Reporte Semanal</h1>
 			</Grid>
