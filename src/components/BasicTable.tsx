@@ -39,17 +39,17 @@ const BasicTable: FC<BasicTableProps> = ({ rows: propRows }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell component="th" scope="row">
-                {row.rangeHours}
-              </TableCell>
-              <TableCell align="right">{row.weeklyTemperature}</TableCell>
-              <TableCell align="right">{row.windDirection}</TableCell>
-              <TableCell align="right">{row.windSpeed}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+  {rows.map((row) => (
+    <TableRow key={`row-${row.rangeHours}-${row.windDirection}`}>
+      <TableCell component="th" scope="row">
+        {row.rangeHours}
+      </TableCell>
+      <TableCell align="right">{row.weeklyTemperature}</TableCell>
+      <TableCell align="right">{row.windDirection}</TableCell>
+      <TableCell align="right">{row.windSpeed}</TableCell>
+    </TableRow>
+  ))}
+</TableBody>
       </Table>
     </TableContainer>
   );
