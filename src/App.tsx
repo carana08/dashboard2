@@ -109,13 +109,13 @@ function App() {
 
 			dataToSummary.push([sunriseTime]);
 
-			let indicatorsElements = Array.from(dataToIndicators).map((element) => (
-				<Indicator title={element[0]} subtitle={element[1]} value={element[2]} />
-			));
+			let indicatorsElements = Array.from(dataToIndicators).map((element, index) => (
+    <Indicator key={`indicator-${index}`} title={element[0]} subtitle={element[1]} value={element[2]} />
+));
 
-			let summaryElements = Array.from(dataToSummary).map((element) => (
-				<Summary datos={element[0]} />
-			));
+let summaryElements = Array.from(dataToSummary).map((element, index) => (
+    <Summary key={`summary-${index}`} datos={element[0]} />
+));
 
 			setIndicators(indicatorsElements);
 			setSummary(summaryElements);
