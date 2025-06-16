@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';  
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { FC } from 'react';
+
 interface RowData {
   rangeHours: string;
   windDirection: string;
@@ -15,16 +16,16 @@ interface RowData {
   // Include other properties as needed
 }
 
- interface Config {
-  rows: Array<object>;
+interface BasicTableProps {
+  readonly rows: Array<object>;
 }
 
-export default function BasicTable(data: Config) {
+const BasicTable: FC<BasicTableProps> = ({ rows: propRows }) => {
   let [rows, setRows] = useState<RowData[]>([]);
 
   useEffect(() => {
-    setRows(data.rows as RowData[]);
-  }, [data]);
+    setRows(propRows as RowData[]);
+  }, [propRows]);
 
   return (
     <TableContainer component={Paper}>
@@ -46,7 +47,6 @@ export default function BasicTable(data: Config) {
               <TableCell align="right">{row.weeklyTemperature}</TableCell>
               <TableCell align="right">{row.windDirection}</TableCell>
               <TableCell align="right">{row.windSpeed}</TableCell>
-              {/* Add other TableCell components as needed */}
             </TableRow>
           ))}
         </TableBody>
@@ -54,3 +54,5 @@ export default function BasicTable(data: Config) {
     </TableContainer>
   );
 }
+
+export default BasicTable;
