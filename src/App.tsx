@@ -19,7 +19,7 @@ function App() {
 	const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 	const [rowsTable, setRowsTable] = useState<RowData[]>([]);
 	const [indicators, setIndicators] = useState<JSX.Element[]>([]);
-	const [summary, setSumary] = useState<JSX.Element[]>([]);
+	const [summary, setSummary] = useState<JSX.Element[]>([]);
 	const [chartData, setChartData] = useState<any[]>([
 		["Hora", "Precipitación", "Humedad", "Nubosidad"]
 	]);
@@ -51,7 +51,7 @@ function App() {
 			}
 
 			const parser = new DOMParser();
-			const xml = parser.parseFromString(savedTextXML || '', 'application/xml');
+			const xml = parser.parseFromString(savedTextXML ?? '', 'application/xml');
 
 			let dataToIndicators = new Array();
 			let dataToSummary = new Array();
@@ -118,7 +118,7 @@ function App() {
 			));
 
 			setIndicators(indicatorsElements);
-			setSumary(summaryElements);
+			setSummary(summaryElements);
 
 			let arrayObjects = Array.from(xml.getElementsByTagName("time")).map((timeElement) => {
 				let rangeHours = (timeElement.getAttribute("from")?.split("T") ?? "") + " - " + (timeElement.getAttribute("to")?.split("T") ?? "");
